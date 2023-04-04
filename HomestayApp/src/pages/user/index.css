@@ -1,0 +1,41 @@
+.user-page .info {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ff4d6a;
+  box-sizing: border-box;
+}
+.user-page .info .set {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #fff;
+  z-index: 10;
+}
+.user-page .info .user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.user-page .info .user img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+.user-page .info .user .tel {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  margin-top: 5px;
+  background-color: #ff7d7a;
+  border-radius: 8px;
+}
+.user-page .info .user .sign {
+  width: 60px;
+  text-align: center;
+  margin-top: 5px;
+}
+/*# sourceMappingURL=./index.css.map */
