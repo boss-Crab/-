@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AwesomeSwiper from 'react-awesome-swiper';
+import { nanoid } from 'nanoid';
 
 export default function (props) {
   const [config, setConfig] = useState({
@@ -22,7 +23,7 @@ export default function (props) {
     <AwesomeSwiper className='banner' config={config}>
       <div className='swiper-wrapper'>
         {props?.banner?.map(item => (
-          <div className='swiper-slide' key={item.id}>
+          <div className='swiper-slide' key={nanoid()}>
             <img alt='banner' src={item?.url}></img>
           </div>
         ))}

@@ -120,8 +120,6 @@ class UserController extends BaseController {
   async logout() {
     const { ctx, app } = this;
     try {
-      // ctx.session[ctx.username] = null;
-      // await ctx.redis.del(ctx.username);
       // 清除
       await app.redis.del(ctx.username);
 
@@ -134,15 +132,24 @@ class UserController extends BaseController {
     }
   }
 
-  // 用户
+  // 修改用户信息
   async edit() {
     const { ctx } = this;
-    // console.log('ctx.params()', ctx.params());
+
     const result = ctx.service.user.edit({
       ...ctx.params(),
       updateTime: ctx.helper.time(),
     });
 
+    this.success(result);
+  }
+
+  // 获取用户名称
+  async getusername() {
+    const { ctx } = this;
+    const { userid } = ctx.request.body;
+    const result = await ctx.service.user.getUsername(userid);
+    console.log(result);
     this.success(result);
   }
 }

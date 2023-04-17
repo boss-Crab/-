@@ -1,0 +1,81 @@
+@import '../../assets/mixin.less';
+.search-page{
+  .operate{
+    width: 97%;
+    background-color: #fff;
+    margin: auto;
+    .addhouse{
+      color: #108EE9;
+      border-radius: 20%;
+      display:inline-block;
+      font-size: 18px;
+      width: 15%;
+      margin: 3px;
+      margin-left: 5%;
+    }
+    .back{
+      color: #108EE9;
+      border-radius: 20%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 18px;
+      width: 15%;
+      margin: 3px;
+    }
+  }
+
+  .am-search{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .result-house{
+    width: 100%;
+    margin-top: 0px;
+    padding: 5px;
+    box-sizing: border-box;
+    .item{
+      .flex(row,flex-start);
+      height: 100px;
+      padding: 4px;
+      background-color: #fff;
+      margin-bottom: 6px;
+      img{
+        width: 120px;
+        height: 86px;
+        object-fit: cover;
+      }
+      &-right{
+        .flex(column,space-between);
+        flex: 1;
+        height: 90px;
+        margin-left: 16px;
+        .house-title, .price, .publishtime, .agreetime{
+          width: 100%;
+        }
+        .publishtime, .agreetime{
+          font-size: 1px;
+        }
+        .house-title{
+          width: 40%;
+          margin-left: -125px;
+          font-size: 14px;
+        }
+        .price{
+          color: #ff4d6a;
+          font-size: 14px;
+        }
+        .house-delete{
+          float: right;
+          margin-top: -25px;
+          margin-left: 120px;
+          .am-button-small{
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}

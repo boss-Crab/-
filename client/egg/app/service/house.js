@@ -73,6 +73,24 @@ class HouseService extends BaseService {
     });
   }
 
+  // 搜索所有民宿
+  async searchall() {
+    return this.run(async (ctx, app) => {
+
+      const result = await ctx.model.House.findAll({
+        include: [
+          {
+            model: app.model.Imgs,
+            limit: 1,
+            attributes: [ 'url' ],
+          },
+        ],
+      });
+      return result;
+    });
+  }
+
+  // 获取民宿详情
   async detail(id) {
     return this.run(async (ctx, app) => {
       const result = await ctx.model.House.findOne({
@@ -97,6 +115,82 @@ class HouseService extends BaseService {
       return result;
     });
   }
+
+  // 添加民宿
+  // eslint-disable-next-line no-unused-vars
+  async addhouse(name, info, addres, price, cityCode, startTime, endTime, imgurl, publishTime) {
+    // eslint-disable-next-line no-unused-vars
+    return this.run(async (ctx, app) => {
+      // 添加民宿
+      const result = await ctx.model.House.create({
+        name,
+        info,
+        addres,
+        price,
+        cityCode,
+        startTime,
+        endTime,
+        publishTime,
+      });
+
+      // 获取当前民宿的id
+      const house = await ctx.model.House.findOne({
+        where: {
+          name,
+          addres,
+          cityCode,
+        },
+      });
+
+      // 添加图片地址
+      // eslint-disable-next-line no-unused-vars
+      const imgs = await ctx.model.Imgs.create({
+        url: imgurl,
+        houseId: house.id,
+        createTime: publishTime,
+      });
+
+      return result;
+    });
+  }
+
+  // 获取民宿
+  async getHouse(name, addres) {
+    return this.run(async () => {
+      const { ctx } = this;
+      const result = await ctx.model.House.findOne({
+        where: {
+          name,
+          addres,
+        },
+      });
+      // console.log('result', result);
+      return result;
+    });
+  }
+
+  // 删除民宿
+  async delete(id) {
+    return this.run(async () => {
+      const { ctx } = this;
+      // 删除民宿
+      const result = await ctx.model.House.destroy({
+        where: {
+          id,
+        },
+      });
+
+      // 删除数据库中民宿相关的图片信息
+      await ctx.model.Imgs.destroy({
+        where: {
+          houseId: id,
+        },
+      });
+      // console.log('result', result);
+      return result;
+    });
+  }
+
 }
 
 module.exports = HouseService;

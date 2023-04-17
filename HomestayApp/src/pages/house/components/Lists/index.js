@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ShowLoading } from '@/components';
 import { timer } from '@/utils';
+import { nanoid } from 'nanoid';
 
 export default function (props) {
   const [state, setState] = useState()
 
-  useEffect(() => {}, [])
+  useEffect(() => { }, [])
 
   return (
     <div className='comment'>

@@ -9,12 +9,11 @@ class CommentService extends BaseService {
     });
   }
 
-  async lists(params, userId) {
+  async lists(params) {
     return this.run(async (ctx, app) => {
       const result = await ctx.model.Comment.findAll({
         where: {
           houseId: params.id,
-          userId,
         },
         limit: params.pageSize,
         offset: (params.pageNum - 1) * params.pageSize,

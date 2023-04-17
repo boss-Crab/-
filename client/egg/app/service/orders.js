@@ -4,12 +4,25 @@ const BaseService = require('./base');
 class OrdersService extends BaseService {
   // 查询订单
   async hasOrder(params) {
-    console.log(params);
+    // console.log(params);
     return this.run(async ctx => {
       const result = await ctx.model.Orders.findOne({
         where: {
           userId: params.userId,
           houseId: params.houseId,
+        },
+      });
+      // console.log(result);
+      return result;
+    });
+  }
+  // 查询订单
+  async findOrder(id) {
+    // console.log(params);
+    return this.run(async ctx => {
+      const result = await ctx.model.Orders.findOne({
+        where: {
+          houseId: id,
         },
       });
       // console.log(result);
@@ -33,6 +46,19 @@ class OrdersService extends BaseService {
         where: {
           houseId: id,
           userId,
+          finished: 0,
+        },
+      });
+      return result;
+    });
+  }
+
+  // 删除民宿时,订单删除
+  async delete(id) {
+    return this.run(async ctx => {
+      const result = await ctx.model.Orders.destroy({
+        where: {
+          houseId: id,
         },
       });
       return result;
@@ -71,6 +97,21 @@ class OrdersService extends BaseService {
     return this.run(async ctx => {
       const result = await ctx.model.Orders.update({
         isPayed: 1,
+        orderNumber: params.orderNumber.orderNumber,
+      }, {
+        where: {
+          id: params.id,
+        },
+      });
+      return result;
+    });
+  }
+
+  async finished(params) {
+    return this.run(async ctx => {
+      const result = await ctx.model.Orders.update({
+        isPayed: 1,
+        finished: 1,
         orderNumber: params.orderNumber.orderNumber,
       }, {
         where: {

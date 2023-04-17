@@ -20,6 +20,8 @@ class CommentController extends BaseController {
     // eslint-disable-next-line no-unused-vars
     const { ctx, app } = this;
     const user = await ctx.service.user.getUser(ctx.username);
+    // const { id } = ctx.request.body;
+    // console.log('id', id);
     const result = await ctx.service.comment.lists(ctx.params(), user.id);
 
     this.success(result);

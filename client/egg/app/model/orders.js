@@ -23,10 +23,22 @@ module.exports = app => {
         return new Date(this.getDataValue('updateTime')).getTime();
       },
     },
+    finished: INTEGER,
+    startTime: {
+      type: DATE,
+      get() {
+        return new Date(this.getDataValue('startTime')).getTime();
+      },
+    },
+    endTime: {
+      type: DATE,
+      get() {
+        return new Date(this.getDataValue('endTime')).getTime();
+      },
+    },
   });
 
-  // 关联数据
-  // 一个房子对应过个图片, hasMany
+
   Orders.associate = () => {
     app.model.Orders.belongsTo(app.model.House, {
       foreignKey: 'houseId',

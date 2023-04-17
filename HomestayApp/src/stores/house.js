@@ -1,8 +1,10 @@
 import { Http } from '@/utils';
+import { Toast } from 'antd-mobile';
+import { history } from 'umi';
 import { CommonEnum } from '@/enums';
 
 async function handleOrder(url, dispatch, payload) {
-  console.log('handleOrder payload', payload);
+  // console.log('handleOrder payload', payload);
   const result = await Http({
     url,
     body: payload
@@ -78,6 +80,7 @@ export default {
     }
   },
   effects: {
+    // 获取民宿详情
     async getDetailAsync(dispatch, rootState, payload) {
       const detail = await Http({
         url: '/house/detail',
@@ -89,6 +92,7 @@ export default {
       })
     },
 
+    // 获取民宿评论列表
     async getCommentsAsync(dispatch, rootState, payload) {
       const { comments, page } = rootState.house;
       const lists = await Http({
@@ -109,6 +113,7 @@ export default {
       });
     },
 
+    // 添加评论
     async addCommentsAsync(dispatch, rootState, payload) {
       const result = await Http({
         url: '/comment/add',
@@ -136,5 +141,18 @@ export default {
     async delOrderAsync(dispatch, rootState, payload) {
       await handleOrder('/orders/delOrder', dispatch, payload);
     },
+
+    // 添加民宿
+    async addHouseAsync(dispatch, rootState, payload) {
+      const result = await Http({
+        url: '/house/addhouse',
+        body: payload
+      });
+      if (result) {
+        Toast.success('编辑成功');
+        history.push('/allhouse');
+      }
+    },
+
   }
 };

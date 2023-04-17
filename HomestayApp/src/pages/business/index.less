@@ -1,0 +1,45 @@
+@import '../../assets/mixin.less';
+
+.user-page {
+  .info {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ff4d6a;
+    box-sizing: border-box;
+
+    .set {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .user {
+      .flex(column, center);
+      color: #fff;
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+      }
+
+      .tel {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+        margin-top: 5px;
+        background-color: #ff7d7a;
+        border-radius: 8px;
+      }
+
+      .businesssign {
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import '../../assets/mixin.less';
+
 .house-page {
 
   .swiper-slide {
@@ -20,8 +22,9 @@
 
     // font-weight:lighter;
     .info-title {
-      font-size: 15px;
+      font-size: 18px;
       font-weight: bolder;
+      margin-left: 40%;
       height: 25px;
       line-height: 25px;
       color: rgba(0, 0, 0, 0.75);
@@ -30,7 +33,34 @@
     .info-msg {
       height: 25px;
       line-height: 25px;
+      margin-left: 7px;
     }
+
+    .info-price{
+      margin-left: 7px;
+    }
+
+    .choose-time {
+      height: 25px;
+      line-height: 25px;
+      font-size: 12px;
+      padding-right: 15px;
+      box-sizing: border-box;
+      .flex(row, space-between, flex-start);
+      justify-content: inherit;
+
+      .choose-time_left {
+        color: #000;
+      }
+
+      .choose-time_right {
+        color: #888;
+      }
+    }
+    .choose-time_left{
+      margin-left: 7px;
+    }
+    
   }
 
   .comment {

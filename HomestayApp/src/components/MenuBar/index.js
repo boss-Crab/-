@@ -33,7 +33,7 @@ export default class MenuBar extends Component {
           link: '/user'
         },
         {
-          title: '商家',
+          title: '管理员',
           selectedIcon: <BsPersonFill style={{ fontSize: '1.5rem' }} />,
           icon: <BsPerson style={{ fontSize: '1.5rem' }} />,
           link: '/business'

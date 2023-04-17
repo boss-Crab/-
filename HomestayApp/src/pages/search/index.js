@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { SearchBar, ActivityIndicator } from 'antd-mobile';
 import { useHttpHook, useObserverHook, useImgHook } from '@/hooks';
-import { useLocation } from 'umi';
+import { useLocation, history } from 'umi';
 import { ShowLoading } from '@/components';
 import { CommonEnum } from '@/enums';
-import { nanoid } from 'nanoid'
 
 import './index.less'
 
@@ -16,22 +15,22 @@ export default function (props) {
   const [houseName, setHouseName] = useState('');
 
   const [page, setPage] = useState(CommonEnum.PAGE);
-  // 热门民宿数组
+  // 民宿数组
   const [houseLists, setHouseLists] = useState([]);
   // loading的状态值
   const [showLoading, setShowLoading] = useState(true);
   // 搜索栏提交民宿名称
   const [houseSubmitName, setHouseSubmitName] = useState('');
 
-  // 向/house/search发送mock请求
+  // 搜索请求
   const [houses, loading] = useHttpHook({
     url: '/house/search',
     body: {
       ...page,
       houseName,
       code: query?.code,
-      startTime: query?.startTime + ' 00:00:00',
-      endTime: query?.endTime + ' 23:59:59',
+      startTime: query?.startTime + ' 12:00:00',
+      endTime: query?.endTime + ' 12:00:00',
     },
     watch: [page.pageNum, houseSubmitName]
   });
@@ -52,7 +51,7 @@ export default function (props) {
     }
   }, null);
 
-  useImgHook('.item-img', (entries) => {}, null);
+  useImgHook('.item-img', (entries) => { }, null);
 
   // 4. 监听loading的变化，拼装数据
   useEffect(() => {
@@ -90,6 +89,17 @@ export default function (props) {
     _handleSubmit(value);
   };
 
+  // 点击跳转到该房屋详情页面
+  const handleClick = (id) => {
+    history.push({
+      pathname: '/house',
+      query: {
+        id,
+        startTime: query?.startTime + ' 12:00:00',
+        endTime: query?.endTime + ' 12:00:00',
+      }
+    })
+  }
 
   return (
     <div className='search-page'>
@@ -107,7 +117,7 @@ export default function (props) {
         ? <ActivityIndicator toast />
         : <div className='result'>
           {houseLists?.map(item => (
-            <div className='item' key={item.id}>
+            <div className='item' key={item.id} onClick={() => handleClick(item.id)}>
               <img alt='img' className='item-img' src={require('../../assets/img.jpg')} data-src={item?.imgs[0]?.url}></img>
               <div className='item-right'>
                 <div className='title'>{item.name}</div>

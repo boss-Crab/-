@@ -8,14 +8,10 @@ import './index.less'
 
 export default function (props) {
   const { user: { username, avatar, phone, sign, getUserAsync, logoutAsync } } = useStoreHook();
-  const [state, setState] = useState()
 
   const handleClick = () => {
     history.push({
       pathname: '/user/edit',
-      // query: {
-      //   id: 10
-      // }
     });
   };
 
@@ -23,12 +19,6 @@ export default function (props) {
   const handleLogout = () => {
     logoutAsync();
   }
-
-  useEffect(() => {
-    // getUserAsync({
-    //   id: 1
-    // });
-  }, [])
 
   return (
     <ErrorBoundary>

@@ -97,5 +97,22 @@ CREATE Table `orders`(
   `isPayed` INT(2) DEFAULT 0 COMMENT '是否支付, 0未支付, 1已支付',
   `createTime` TIMESTAMP DEFAULT NULL COMMENT '创建时间',
   `updateTime` TIMESTAMP DEFAULT NULL COMMENT '更新时间',
+  `finished` INT(2) DEFAULT 0 COMMENT '是否完成订单, 0未支付, 1已支付',
+  `startTime` TIMESTAMP DEFAULT NULL COMMENT '出租开始时间',
+  `endTime` TIMESTAMP DEFAULT NULL COMMENT '出租结束时间',
   PRIMARY KEY(`id`)
 )engine=InnoDB auto_increment=1 DEFAULT charset=utf8 COMMENT='订单表';
+
+
+-- 商家表
+CREATE Table `business`(
+  `id` INT NOT NULL auto_increment,
+  `businessname` VARCHAR(20) DEFAULT NULL COMMENT '用户名',
+  `businesspassword` VARCHAR(64) DEFAULT NULL COMMENT '密码',
+  `avatar` TEXT COMMENT '头像',
+  `phone` VARCHAR(20) DEFAULT NULL COMMENT '电话',
+  `sign` VARCHAR(300) DEFAULT NULL COMMENT '用户签名',
+  `createTime` TIMESTAMP DEFAULT NULL COMMENT '创建时间',
+  `updateTime` TIMESTAMP DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY(`id`)
+)engine=InnoDB auto_increment=1 DEFAULT charset=utf8 COMMENT='商家表';

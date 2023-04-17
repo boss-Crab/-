@@ -19,6 +19,20 @@ class UserService extends BaseService {
     });
   }
 
+  // 获取用户名称
+  async getUsername(userid) {
+    return this.run(async () => {
+      const { ctx } = this;
+      const result = await ctx.model.User.findOne({
+        where: {
+          id: userid,
+        },
+      });
+      // console.log('result', result);
+      return result;
+    });
+  }
+
   // 添加用户
   async add(params) {
     return this.run(async () => {
@@ -32,6 +46,7 @@ class UserService extends BaseService {
   async edit(params) {
     return this.run(async ctx => {
       // console.log('params', params);
+      // console.log('ctx.username', ctx.username);
       const result = await ctx.model.User.update(params, {
         where: {
           username: ctx.username,

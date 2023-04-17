@@ -47,12 +47,7 @@ function Search(props) {
     } else {
       Toast.fail('请选择时间');
     }
-
   }
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     // <ErrorBoundary>
@@ -92,7 +87,7 @@ function Search(props) {
 }
 
 function areEqual(prevProps, nextProps) {
-  console.log(prevProps, nextProps);
+  // console.log(prevProps, nextProps);
   if (prevProps.citys === nextProps.citys && prevProps.citysLoading === nextProps.citysLoading) {
     return true;
   } else {

@@ -15,8 +15,9 @@
   font-size: 12px;
 }
 .house-page .info .info-title {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bolder;
+  margin-left: 40%;
   height: 25px;
   line-height: 25px;
   color: rgba(0, 0, 0, 0.75);
@@ -24,6 +25,31 @@
 .house-page .info .info-msg {
   height: 25px;
   line-height: 25px;
+  margin-left: 7px;
+}
+.house-page .info .info-price {
+  margin-left: 7px;
+}
+.house-page .info .choose-time {
+  height: 25px;
+  line-height: 25px;
+  font-size: 12px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: inherit;
+}
+.house-page .info .choose-time .choose-time_left {
+  color: #000;
+}
+.house-page .info .choose-time .choose-time_right {
+  color: #888;
+}
+.house-page .info .choose-time_left {
+  margin-left: 7px;
 }
 .house-page .comment .comment-title {
   font-size: 20px;

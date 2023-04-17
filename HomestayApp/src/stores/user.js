@@ -39,6 +39,7 @@ export default {
         });
       }
     },
+
     async editUserAsync(dispatch, rootState, payload) {
       const result = await Http({
         url: '/user/edit',
@@ -87,7 +88,8 @@ export default {
         body: payload
       });
       Toast.success('退出登录成功');
-      localStorage.clear();
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
 
       location.href = '/login?from=' + location.pathname;
     }

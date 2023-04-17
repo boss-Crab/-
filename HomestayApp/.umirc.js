@@ -44,6 +44,46 @@ export default defineConfig({
           title: '商家'
         },
         {
+          path: '/businesslogin',
+          component: './businessLogin',
+          title: '商家登录',
+        },
+        {
+          path: '/businessregister',
+          component: './businessRegister',
+          title: '商家注册',
+        },
+        {
+          path: '/businessorder',
+          component: './businessOrders',
+          title: '商家历史订单',
+        },
+        {
+          path: '/businessoperate',
+          component: './businessOperate',
+          title: '订单操作',
+        },
+        {
+          path: '/orderdetail',
+          component: './orderdetail',
+          title: '订单详情',
+        },
+        {
+          path: '/addhouse',
+          component: './addhouse',
+          title: '添加民宿',
+        },
+        {
+          path: '/allhouse',
+          component: './allhouse',
+          title: '民宿信息',
+        },
+        {
+          path: '/business/edit',
+          component: './business/edit',
+          title: '设置用户'
+        },
+        {
           path: '/search',
           component: './search/index',
           title: '搜索'

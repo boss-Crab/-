@@ -16,13 +16,18 @@ export default function (props) {
 
   const { query } = useLocation();
 
-  const handleBtnClick = (id) => {
+  const handleBtnClick = (id, startTime, endTime) => {
     if (!id) {
       // id不存在则添加
+      // console.log('id', id);
+      // console.log('startTime, endTime', startTime, endTime);
       addOrderAsync({
-        id: query?.id
+        id: query?.id,
+        startTime: startTime,
+        endTime: endTime,
       });
     } else {
+      // console.log('id', id);
       // id存在则删除
       delOrderAsync({
         id: query?.id,
@@ -51,6 +56,7 @@ export default function (props) {
 
   useEffect(() => {
     // 获取民宿评论
+    // console.log(query?.id);
     getCommentsAsync({
       id: query?.id
     })
@@ -77,7 +83,7 @@ export default function (props) {
       <Banner banner={detail?.banner}></Banner>
 
       {/* 房屋信息 */}
-      <Info detail={detail?.info} order={order} btnClick={handleBtnClick}></Info>
+      <Info detail={detail?.info} order={order} btnClick={handleBtnClick} startTime={query?.startTime} endTime={query?.endTime}></Info>
 
       {/* 评论列表 */}
       <Lists lists={comments} showLoading={showLoading}></Lists>

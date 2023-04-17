@@ -18,10 +18,14 @@ class OrdersController extends BaseController {
   async addOrder() {
     const { ctx } = this;
     // const user = await ctx.service.user.getUser(ctx.username);
+    // console.log(ctx.params('startTime'));
+    // console.log(ctx.params('endTime'));
     const result = await ctx.service.orders.addOrder({
       userId: ctx.userId,
       houseId: ctx.params('id'),
       isPayed: 0,
+      startTime: ctx.params('startTime'),
+      endTime: ctx.params('endTime'),
       createTime: ctx.helper.time(),
     });
     // console.log('addOrder', result);

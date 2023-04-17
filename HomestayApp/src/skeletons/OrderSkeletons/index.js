@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 
 import './index.less'
 
@@ -12,7 +13,7 @@ export default function (props) {
   return (
     <div className='order-skeletons'>
       {state.map(item => (
-        <div className='order-item' key={item}>
+        <div className='order-item' key={nanoid()}>
           <div className={'skeletons left'}></div>
           <div className='center'>
             <div className={'skeletons title'}></div>

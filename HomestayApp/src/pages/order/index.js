@@ -7,7 +7,7 @@ import { Http } from '@/utils';
 import { isEmpty } from 'project-libs';
 import { ErrorBoundary } from '@/components';
 
-import './index.less'
+import './index.less';
 
 export default function (props) {
   const [page, setPage] = useState(CommonEnum.PAGE);
@@ -29,6 +29,8 @@ export default function (props) {
 
   const fetchOrder = async (pageNum) => {
     const result = await invokeHttp(pageNum);
+
+    // console.log('order result', result)
 
     if (!isEmpty(result) && result.length <= page.pageSize) {
       setOrders(result);

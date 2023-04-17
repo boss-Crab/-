@@ -20,4 +20,19 @@ module.exports = {
 
     return tokenCache ? tokenCache.id : undefined;
   },
+
+  get businessname() {
+    console.log(this.request.header);
+    const businessToken = this.request.header.token;
+    const tokenCache = businessToken ? this.app.jwt.verify(businessToken, this.app.config.jwt.secret) : undefined;
+
+    return tokenCache ? tokenCache.businessname : undefined;
+  },
+
+  get businessId() {
+    const businessToken = this.request.header.businessToken;
+    const tokenCache = businessToken ? this.app.jwt.verify(businessToken, this.app.config.jwt.secret) : undefined;
+
+    return tokenCache ? tokenCache.businessId : undefined;
+  },
 };
